@@ -1,20 +1,14 @@
-/*
-Full Name
-Email
-Password
-Occupation
-State 
-*/
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Form = () => {
   const [data, setData] = useState(null);
+  const [occupation, setOccupations] = useState([]);
   const [input, setInput] = useState({
     fullName: "",
     email: "",
     password: "",
-    occupation: "",
     state: "",
   });
 
@@ -35,18 +29,14 @@ const Form = () => {
     e.preventdefault();
 
   }
-  
-      useEffect(() => {
-      const data = axios.get('https://frontend-take-home.fetchrewards.com/form')
+  useEffect(() => {    
+       axios.get('https://frontend-take-home.fetchrewards.com/form')
       .then((res) => {
-        console.log('res', res)
-      });
-     //data dependency
-    },[]);
+        setOccupations(res.data.occupations);
+        console.log('occup',occupation)
+      })
+    },[])
 
-
-
-  console.log("input", input);
   return (
     <div>
       <h2>User Creation Form</h2>
@@ -82,17 +72,17 @@ const Form = () => {
             />
           </div>
           <div>
-            <label className="column">Occupation:</label>
-            <select >
-              <option value={"test"}>Test</option>
-              <option value={"test2"}>Test2</option>
+            <label className="column" name="occupation">Occupation:</label>
+            <select name="occupation">
+              {occupation.map((job,i) => 
+               <option value={job} key={job}>{job}</option>
+              )}
             </select>
           </div>
           <div>
             <label className="column">State:</label>
-           <select >
-              <option value={"test"}>Test</option>
-              <option value={"test2"}>Test2</option>
+           <select>
+              
             </select>
           </div>
         </form>
