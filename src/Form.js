@@ -5,8 +5,11 @@ Password
 Occupation
 State 
 */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 const Form = () => {
+  const [data, setData] = useState(null);
   const [input, setInput] = useState({
     fullName: "",
     email: "",
@@ -17,9 +20,8 @@ const Form = () => {
 
   const handleInput = (e) => {
     //take previous obj val
-    console.log("event", e.target.value);
     const { name, value } = e.target;
-    
+  
     setInput((prev) => {
       return {
         //return state object and update only inputVal
@@ -28,6 +30,20 @@ const Form = () => {
       };
     });
   };
+
+  const handleSubmit = (e) => {
+    e.preventdefault();
+
+  }
+  const inputSelections = () => {
+      useEffect(() => {
+      const data = axios.get('https://frontend-take-home.fetchrewards.com/form').then((res) => {
+        
+      });
+      console.log(res.data)
+    },[]);
+  }
+
   console.log("input", input);
   return (
     <div>
@@ -65,20 +81,21 @@ const Form = () => {
           </div>
           <div>
             <label className="column">Occupation:</label>
-            <input
-              type="text"
-              id="work"
-              name="occupation"
-              onChange={handleInput}
-            />
+            <select>
+              <option value={"test"}>Test</option>
+              <option value={"test2"}>Test2</option>
+            </select>
           </div>
           <div>
             <label className="column">State:</label>
-            <input type="text" id="state" name="state" onChange={handleInput} />
+           <select>
+              <option value={"test"}>Test</option>
+              <option value={"test2"}>Test2</option>
+            </select>
           </div>
         </form>
       </div>
-      <button>Send</button>
+      <button onClick={handleSubmit}>Send</button>
     </div>
   );
 };
