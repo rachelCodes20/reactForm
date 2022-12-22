@@ -35,14 +35,16 @@ const Form = () => {
     e.preventdefault();
 
   }
-  const inputSelections = () => {
+  
       useEffect(() => {
-      const data = axios.get('https://frontend-take-home.fetchrewards.com/form').then((res) => {
-        
+      const data = axios.get('https://frontend-take-home.fetchrewards.com/form')
+      .then((res) => {
+        console.log('res', res)
       });
-      console.log(res.data)
+     //data dependency
     },[]);
-  }
+
+
 
   console.log("input", input);
   return (
@@ -81,14 +83,14 @@ const Form = () => {
           </div>
           <div>
             <label className="column">Occupation:</label>
-            <select>
+            <select >
               <option value={"test"}>Test</option>
               <option value={"test2"}>Test2</option>
             </select>
           </div>
           <div>
             <label className="column">State:</label>
-           <select>
+           <select >
               <option value={"test"}>Test</option>
               <option value={"test2"}>Test2</option>
             </select>
