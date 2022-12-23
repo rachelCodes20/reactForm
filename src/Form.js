@@ -114,7 +114,6 @@ const Form = () => {
                 </option>
               ))}
             </select>
-            {work}
           </div>
           <div>
             <label className="column">State:</label>
@@ -136,10 +135,10 @@ const Form = () => {
                 );
               })}
             </select>
+            <button className="selectButton" onClick={handleSubmit}>Send</button>
           </div>
         </RewardsForm>
       </div>
-      <button onClick={handleSubmit}>Send</button>
     </div>
   );
 };
