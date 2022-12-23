@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Form = ({ children }) => {
-  return (
-    <form className="innerForm">{ children }</form>
-  )
-}
+  return <form className="innerForm">{children}</form>;
+};
 
-export default Form
+export default Form;

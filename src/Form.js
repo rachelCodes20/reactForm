@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useRewardsData from "./hooks/useRewardsData";
@@ -7,7 +6,7 @@ import PasswordInput from "./components/PasswordInput";
 import RewardsForm from "./components/RewardsForm";
 
 const Form = () => {
-  const { states , occupations } = useRewardsData();
+  const { states, occupations } = useRewardsData();
   const [input, setInput] = useState({
     fullName: "",
     email: "",
@@ -16,7 +15,7 @@ const Form = () => {
     state: "",
   });
 
-   const handleInput = (e) => {
+  const handleInput = (e) => {
     //take previous obj val
     const { name, value } = e.target;
     setInput((prev) => {
@@ -27,51 +26,92 @@ const Form = () => {
       };
     });
   };
-
-  console.log('input', input)
-  // function checkFormFields (obj){
-  //   for(let key in input){
-  //build in util directory with functions file
-  // }
-  // checkFormFields(input)
-  const handleSubmit = (e) => {
-    e.preventdefault();
-    if(checkFormFields){
-        alert('please complete each form field')
-    }else{
-         axios.post('https://frontend-take-home.fetchrewards.com/form', input)
-          .then(response => {
-          console.log(response);
-        })
-          .catch(function (error) {
-            console.log(error);
-          });
-        }
+  let result;
+  function checkFormFields(obj) {
+    for (let key in input) {
+      //build in util directory with functions file
+      if (input[key] === "") {
+        result = false;
       }
+      result = true;
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("input", input);
+    if (checkFormFields === false) {
+      alert("please complete each form field");
+    } else {
+      async function postReq() {
+        const result = await axios
+          .post("https://frontend-take-home.fetchrewards.com/form", {
+            fullName: input.fullName,
+            email: input.email,
+            password: input.password,
+            occupation: input.occupation,
+            state: input.state,
+          })
+          .then((response) => {
+            console.log("reponseee", response.data);
+          })
+          .catch(function (error) {
+            console.error("axios error", error);
+          });
+      }
+      postReq();
+    }
+  };
   return (
-    <div>
-      <h2>User Creation Form</h2>
+    <div className="App">
+      <h2 class="userForm">User Form</h2>
       <div className="formDiv">
         <RewardsForm>
-          <TextInput label="Full Name" inputID="fullName" inputValue={input.fullName} handleInput={handleInput}/>
-          <TextInput label="Email" inputID="email" inputValue={input.email} handleInput={handleInput}/>
-          <PasswordInput label="password" inputID="password" inputValue={input.password} handleInput={handleInput} />
+          <TextInput
+            label="Full Name"
+            inputID="fullName"
+            inputValue={input.fullName}
+            handleInput={handleInput}
+          />
+          <TextInput
+            label="Email"
+            inputID="email"
+            inputValue={input.email}
+            handleInput={handleInput}
+          />
+          <PasswordInput
+            label="password"
+            inputID="password"
+            inputValue={input.password}
+            handleInput={handleInput}
+          />
           {/* select inputs -- no props */}
           <div>
-            <label className="column" name="occupation">Occupation:</label>
+            <label className="column" name="occupation">
+              Occupation:
+            </label>
             <select name="occupation">
-              {occupations.map((job) => 
-               <option value={job} key={job}>{job}</option>
-              )}
+              {occupations.map((job) => (
+                <option value={input} key={job} onChange={handleInput}>
+                  {job}
+                </option>
+              ))}
             </select>
           </div>
           <div>
-           <label className="column">State:</label>
-           <select name="state">
-               {states.map((st) => {
-                return <option value={st.name} key={st.name}>{st.name}</option>
-               }
-              )}
+            <label className="column">State:</label>
+            <select name="state">
+              {states.map((st) => {
+                return (
+                  <option
+                    value={st.name}
+                    key={st.name}
+                    onChange={(e) => handleInput(e.target.value)}
+                  >
+                    {st.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </RewardsForm>
