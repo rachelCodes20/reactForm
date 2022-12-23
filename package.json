@@ -6,6 +6,8 @@
     "build": "parcel build"
   },
   "devDependencies": {
+    "@parcel/transformer-html": "^2.8.2",
+    "@parcel/transformer-posthtml": "^2.8.2",
     "buffer": "^5.7.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",

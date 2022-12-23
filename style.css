@@ -1,20 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&family=Zen+Dots&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.userForm {
+  font-family: 'Rubik 80s Fade', cursive;
+  font-weight: lighter;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  background: #919abf;
+  font-size: 14px;
+  font-weight: 400;
+  height: 100vh;
+  justify-items: center;
+}
+
+.userForm {
+  text-align: center;
+  font-size: 45px;
+  padding: 5px;
+}
+
 .formDiv {
   display: flex;
   flex-direction: row;
-  background-color: rgb(200, 223, 160);
+  background-color: rgb(195, 211, 165);
   position: relative;
   width: fit-content;
   border-radius: 2px;
   padding: 5px;
+  height: 100%;
 }
 
 .innerForm .column {
   display: flex;
   flex-direction: column;
+  font-size: 35px;
+  font-weight: lighter;
+}
+
+.innerForm {
+  padding: 10px;
+}
+
+.column {
+  padding: 10px;
+  font-size: 30px;
+}
+
+select {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 10px 5px 5px #919abf;
+  font-size: 25px;
+}
+
+option {
+  border-style: none;
+  outline: none;
+  border: none;
+  font-size: 20px;
 }
 input {
   width: 500px;
-  border: solid black 2px;
+  border: none;
   padding: 5px;
   margin: 10px;
+  height: 50px;
+  box-shadow: 10px 5px 5px #919abf;
+  outline: none;
+  display: flex;
+  border-style: none;
+  border-radius: 2px;
+  flex-direction: column-reverse;
+  font-size: 20px;
+}
+
+.selectButton {
+  margin: 10px;
+  width: 70px;
+  font-size: 30px;
+  background-color: rgb(102, 115, 188);
+  color: whitesmoke;
+  padding: 2px;
+  border-style: none;
 }
