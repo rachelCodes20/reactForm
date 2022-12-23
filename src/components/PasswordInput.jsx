@@ -9,7 +9,7 @@ function PasswordInput({
 }) {
   return (
     <div>
-      <label className="column">{label}:</label>
+      <label className="column">{label}</label>
       <input
         type="password"
         id={inputID}

@@ -99,7 +99,7 @@ const Form = () => {
           {/* select inputs -- no props */}
           <div>
             <label htmlFor="work" className="column">
-              Occupation:
+              Occupation
             </label>
             {/* <select name="occupation"> */}
             <select
@@ -116,7 +116,7 @@ const Form = () => {
             </select>
           </div>
           <div>
-            <label className="column">State:</label>
+            <label className="column">State</label>
             <select
               name="homeState"
               id="homeState"

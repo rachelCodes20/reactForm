@@ -35,11 +35,13 @@ body {
 .innerForm .column {
   display: flex;
   flex-direction: column;
+  font-size: 35px;
+  font-weight: lighter;
 }
 
 .column {
   padding: 10px;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 select {
@@ -49,17 +51,26 @@ select {
   padding: 5px;
   box-shadow: 10px 5px 5px #919abf;
 }
+
+option {
+  border-style: none;
+  outline: none;
+  border: none;
+  font-size: 20px;
+}
 input {
   width: 500px;
-  border: solid black 2px;
+  border: none;
   padding: 5px;
   margin: 10px;
-  height: 30px;
+  height: 50px;
   box-shadow: 10px 5px 5px #919abf;
+  outline: none;
   display: flex;
   border-style: none;
   border-radius: 2px;
   flex-direction: column-reverse;
+  font-size: 20px;
 }
 
 .selectButton {
