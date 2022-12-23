@@ -7,8 +7,8 @@ import RewardsForm from "./components/RewardsForm";
 
 const Form = () => {
   const { states, occupations } = useRewardsData();
-  const [work, setOccupation] = useState("");
-  const [homeState, setHomeState] = useState("");
+  // const [work, setOccupation] = useState("");
+  // const [homeState, setHomeState] = useState("");
   const [input, setInput] = useState({
     fullName: "",
     email: "",
@@ -75,7 +75,7 @@ const Form = () => {
   };
   return (
     <div className="App">
-      <h2 class="userForm">User Form</h2>
+      <h2 className="userForm">User Form</h2>
       <div className="formDiv">
         <RewardsForm>
           <TextInput
@@ -98,22 +98,21 @@ const Form = () => {
           />
           {/* select inputs -- no props */}
           <div>
-            <label htmlFor="work" className="column">
+            <label htmlFor="occupation" className="column">
               Occupation
             </label>
-            {/* <select name="occupation"> */}
             <select
-              name="work"
-              id="work"
-              onChange={(e) => setOccupation(e.target.value)}
-              value={work}
+              name="occupation"
+              id="occupation"
+              onChange={handleInput}
             >
               {occupations.map((job) => (
-                <option key={job}>
+                <option key={job} value={job}>
                   {job}
                 </option>
               ))}
             </select>
+            {input.occupation}
           </div>
           <div>
             <label className="column">State</label>
@@ -121,14 +120,14 @@ const Form = () => {
               name="homeState"
               id="homeState"
               value={homeState}
-              onChange={(e) => setHomeState(e.target.value)}
+              onChange={handleInput}
             >
               {states.map((st) => {
                 return (
                   <option
                     value={st.name}
                     key={st.name}
-                    onChange={(e) => handleInput(e.target.value)}
+                    onChange={handleInput}
                   >
                     {st.name}
                   </option>
