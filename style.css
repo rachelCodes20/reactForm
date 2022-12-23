@@ -1,0 +1,20 @@
+.formDiv {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(200, 223, 160);
+  position: relative;
+  width: fit-content;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.innerForm .column {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  width: 500px;
+  border: solid black 2px;
+  padding: 5px;
+  margin: 10px;
+}
