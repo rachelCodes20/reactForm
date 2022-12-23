@@ -1,18 +1,18 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 body {
-    display: grid;
-    align-items: center;
-    background: #6682f3;
-    font-size: 14px;
-    font-weight: 400;
-    height: 100vh;
-    justify-items: center;
+  display: grid;
+  align-items: center;
+  background: #919abf;
+  font-size: 14px;
+  font-weight: 400;
+  height: 100vh;
+  justify-items: center;
 }
 
 .userForm {
@@ -24,7 +24,7 @@ body {
 .formDiv {
   display: flex;
   flex-direction: row;
-  background-color: rgb(192, 212, 156);
+  background-color: rgb(195, 211, 165);
   position: relative;
   width: fit-content;
   border-radius: 2px;
@@ -36,12 +36,28 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.column {
+  padding: 10px;
+  font-size: 20px;
+}
+
+select {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 10px 5px 5px #919abf;
+}
 input {
   width: 500px;
   border: solid black 2px;
   padding: 5px;
   margin: 10px;
+  height: 30px;
+  box-shadow: 10px 5px 5px #919abf;
   display: flex;
-	flex-direction: column-reverse;
-  
+  border-style: none;
+  border-radius: 2px;
+  flex-direction: column-reverse;
 }
