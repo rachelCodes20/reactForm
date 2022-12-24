@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&family=Zen+Dots&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&family=Zen+Dots&display=swap");
 
 * {
   box-sizing: border-box;
@@ -8,7 +8,7 @@
 }
 
 .userForm {
-  font-family: 'Rubik 80s Fade', cursive;
+  font-family: "Rubik 80s Fade", cursive;
   font-weight: lighter;
 }
 

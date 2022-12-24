@@ -7,8 +7,6 @@ import RewardsForm from "./components/RewardsForm";
 
 const Form = () => {
   const { states, occupations } = useRewardsData();
-  // const [work, setOccupation] = useState("");
-  // const [homeState, setHomeState] = useState("");
   const [input, setInput] = useState({
     fullName: "",
     email: "",
@@ -16,7 +14,6 @@ const Form = () => {
     occupation: "",
     homeState: "",
   });
-  const [postResponse, setPostResponse] = useState({});
   const handleInput = (e) => {
     //take previous obj val
     const { name, value } = e.target;
@@ -53,9 +50,8 @@ const Form = () => {
               fullName: input.fullName,
               email: input.email,
               password: input.password,
-              // occupation: input.occupation,
-              work: input.work,
-              state: input.state,
+              occupation: input.occupation,
+              homeState: input.state,
             },
             {
               headers: {
@@ -70,7 +66,7 @@ const Form = () => {
             console.error("axios error", error);
           });
       }
-      postReq();
+      // postReq();
     }
   };
   return (
@@ -104,22 +100,25 @@ const Form = () => {
             <select
               name="occupation"
               id="occupation"
+              value={input.occupation}
               onChange={handleInput}
             >
               {occupations.map((job) => (
-                <option key={job} value={job}>
+                <option 
+                key={job} 
+                value={job}
+                >
                   {job}
                 </option>
               ))}
             </select>
-            {input.occupation}
           </div>
           <div>
             <label className="column">State</label>
             <select
               name="homeState"
               id="homeState"
-              value={homeState}
+              value={input.homeState}
               onChange={handleInput}
             >
               {states.map((st) => {
@@ -127,7 +126,6 @@ const Form = () => {
                   <option
                     value={st.name}
                     key={st.name}
-                    onChange={handleInput}
                   >
                     {st.name}
                   </option>
