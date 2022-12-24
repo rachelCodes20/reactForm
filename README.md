@@ -1,45 +1,15 @@
-# reactForm
+# Scratch User Form With React
+> React, Parcel, and CSS were used to build and design the user form.
 
-Frontend Take-Home Exercise
-Your task is to build a webpage with a user creation form. The form should take the following required inputs:
+### Componentizing
+> In an effort to adhere to the single responsibility principle and ensure maintainability of the application, components and hooks have been placed into separate components.
 
-Full Name
-Email
-Password
-Occupation
-State
-Occupation and State should allow users to select from options returned by an endpoint. Users should only be able to select one occupation and one state. A GET request to https://frontend-take-home.fetchrewards.com/form will return a JSON body with the following format:
+### Optimizations
+> One security feature I was able to implement was setting a minimum number of characters but other optimizations could include setting a max length as well as pattern restictions. 
 
-{
-"occupations": [
-"occupation1",
-"occupation2",
-...
-],
-"states": [
-{
-"name": "Alabama",
-"abbreviation": "AL"
-},
-...
-]
-}
-You should submit the results of the form to the same endpoint (https://frontend-take-home.fetchrewards.com/form) via a POST request with a JSON body of the following format:
+> The "checkFormFields" function should ensure that the values of the input object have all been entered before allowing for the post request to the endpoint. There is currently a bug in this function but essentially, this is the idea.  
 
-{
-"name": "???",
-"email": "???",
-"password": "???",
-"occupation": "???",
-"state": "???"
-}
-The POST endpoint will return a 201 status code if all fields are provided. The response body will be the created user object. It does not perform any validation beyond this.
+> Aria labels would be an excellent accessibility optimization for the application as well, further assisting with assistive technology.
 
-Minimum Requirements
-Your site must:
-
-Display a form with inputs for each field outlined above
-Allow a user to complete and submit the form
-Do not allow form submission without completing the entire form
-Provide feedback upon successful form submission
-You may complete this exercise using any languages or frameworks you'd like.
+### Accessibility
+> In an attempt to increase the accessibility of the application, lable elements were used to aid screen readers and user with memory loss. Text was set at a minimum of 16px, and providing color contrast between foreground and background colors.

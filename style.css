@@ -15,7 +15,7 @@
 body {
   display: grid;
   align-items: center;
-  background: #919abf;
+  background: #9da4c1;
   font-size: 14px;
   font-weight: 400;
   height: 100vh;
@@ -51,7 +51,10 @@ body {
 }
 
 .column {
-  padding: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px;
   font-size: 30px;
 }
 
@@ -60,7 +63,7 @@ select {
   flex-direction: column;
   margin: 5px;
   padding: 5px;
-  box-shadow: 10px 5px 5px #919abf;
+  box-shadow: 10px 5px 5px #9fa7c7;
   font-size: 25px;
 }
 
@@ -74,23 +77,28 @@ input {
   width: 500px;
   border: none;
   padding: 5px;
-  margin: 10px;
+  margin: 15px;
   height: 50px;
-  box-shadow: 10px 5px 5px #919abf;
+  box-shadow: 10px 5px 5px #9ca4c6;
   outline: none;
   display: flex;
   border-style: none;
   border-radius: 2px;
   flex-direction: column-reverse;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .selectButton {
   margin: 10px;
-  width: 70px;
-  font-size: 30px;
+  width: 100px;
+  font-size: 25px;
   background-color: rgb(102, 115, 188);
   color: whitesmoke;
   padding: 2px;
   border-style: none;
+  border-radius: 2px;
+}
+
+.selectButton:hover {
+  background-color: rgb(42, 96, 205);
 }

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import useRewardsData from "./hooks/useRewardsData";
 import TextInput from "./components/TextInput";
 import PasswordInput from "./components/PasswordInput";
 import RewardsForm from "./components/RewardsForm";
+import SuccessMessage from "./components/SuccessMessage";
+
 
 const Form = () => {
   const { states, occupations } = useRewardsData();
@@ -24,23 +26,23 @@ const Form = () => {
         [name]: value,
       };
     });
-    console.log("name targ", e.target);
   };
   function checkFormFields(obj) {
+    let result = true;
     for (let key in input) {
-      //build in util directory with functions file
-      if (input[key] === "") {
+      //util directory with functions file
+      if (input[key] === '') {
         result = false;
       }
-      result = true;
     }
+    return result;
   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("input", input);
-    if (checkFormFields === false) {
+    if (checkFormFields(input) === false) {
       alert("please complete each form field");
+      return;
     } else {
       async function postReq() {
         await axios
@@ -60,13 +62,15 @@ const Form = () => {
             }
           )
           .then((response) => {
-            console.log("reponseee", response.data);
+            console.log('post req', response.data)
           })
           .catch(function (error) {
-            console.error("axios error", error);
+           return "axios post req error" + error;
           });
+          return (
+            <SuccessMessage />
+          )
       }
-      // postReq();
     }
   };
   return (
@@ -75,19 +79,19 @@ const Form = () => {
       <div className="formDiv">
         <RewardsForm>
           <TextInput
-            label="Full Name"
+            label="Your Full Name"
             inputID="fullName"
             inputValue={input.fullName}
             handleInput={handleInput}
           />
           <TextInput
-            label="Email"
+            label="Your Email"
             inputID="email"
             inputValue={input.email}
             handleInput={handleInput}
           />
           <PasswordInput
-            label="Password"
+            label="Password (8 minimum)"
             inputID="password"
             inputValue={input.password}
             handleInput={handleInput}
@@ -95,7 +99,7 @@ const Form = () => {
           {/* select inputs -- no props */}
           <div>
             <label htmlFor="occupation" className="column">
-              Occupation
+              Your Occupation
             </label>
             <select
               name="occupation"
@@ -104,17 +108,14 @@ const Form = () => {
               onChange={handleInput}
             >
               {occupations.map((job) => (
-                <option 
-                key={job} 
-                value={job}
-                >
+                <option key={job} value={job}>
                   {job}
                 </option>
               ))}
             </select>
           </div>
           <div>
-            <label className="column">State</label>
+            <label className="column">Your State</label>
             <select
               name="homeState"
               id="homeState"
@@ -123,16 +124,15 @@ const Form = () => {
             >
               {states.map((st) => {
                 return (
-                  <option
-                    value={st.name}
-                    key={st.name}
-                  >
+                  <option value={st.name} key={st.name}>
                     {st.name}
                   </option>
                 );
               })}
             </select>
-            <button className="selectButton" onClick={handleSubmit}>Send</button>
+            <button className="selectButton" onClick={handleSubmit}>
+              Submit Form!
+            </button>
           </div>
         </RewardsForm>
       </div>
