@@ -90,11 +90,15 @@ input {
 
 .selectButton {
   margin: 10px;
-  width: 70px;
-  font-size: 30px;
+  width: 100px;
+  font-size: 25px;
   background-color: rgb(102, 115, 188);
   color: whitesmoke;
   padding: 2px;
   border-style: none;
   border-radius: 2px;
+}
+
+.selectButton:hover {
+  background-color: rgb(42, 96, 205);
 }
