@@ -6,7 +6,6 @@ import PasswordInput from "./components/PasswordInput";
 import RewardsForm from "./components/RewardsForm";
 import SuccessMessage from "./components/SuccessMessage";
 
-
 const Form = () => {
   const { states, occupations } = useRewardsData();
   const [input, setInput] = useState({
@@ -31,7 +30,7 @@ const Form = () => {
     let result = true;
     for (let key in input) {
       //util directory with functions file
-      if (input[key] === '') {
+      if (input[key] === "") {
         result = false;
       }
     }
@@ -62,14 +61,12 @@ const Form = () => {
             }
           )
           .then((response) => {
-            console.log('post req', response.data)
+            console.log("post req", response.data);
           })
           .catch(function (error) {
-           return "axios post req error" + error;
+            return "axios post req error" + error;
           });
-          return (
-            <SuccessMessage />
-          )
+        return <SuccessMessage />;
       }
     }
   };
