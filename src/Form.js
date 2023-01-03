@@ -38,11 +38,12 @@ const Form = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("input", input);
+   
     if (checkFormFields(input) === false) {
       alert("please complete each form field");
       return;
     } else {
+       console.log("input", input);
       async function postReq() {
         await axios
           .post(
@@ -66,8 +67,10 @@ const Form = () => {
           .catch(function (error) {
             return "axios post req error" + error;
           });
-        return <SuccessMessage />;
+          
       }
+      console.log('request completed')
+      postReq();
     }
   };
   return (
