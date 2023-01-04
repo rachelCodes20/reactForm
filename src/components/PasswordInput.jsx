@@ -6,8 +6,9 @@ function PasswordInput({
   minLength = 8,
   inputValue,
   handleInput,
-}) {
-  return (
+}) 
+{
+    return (
     <div>
       <label className="column">{label}</label>
       <input
@@ -20,7 +21,8 @@ function PasswordInput({
         required
       />
     </div>
-  );
+  )
+  ;
 }
 
 export default PasswordInput;

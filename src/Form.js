@@ -8,6 +8,8 @@ import SuccessMessage from "./components/SuccessMessage";
 
 const Form = () => {
   const { states, occupations } = useRewardsData();
+  let lengthOfPassword;
+
   const [input, setInput] = useState({
     fullName: "",
     email: "",
@@ -26,6 +28,7 @@ const Form = () => {
       };
     });
   };
+
   function checkFormFields(obj) {
     let result = true;
     for (let key in input) {
@@ -38,14 +41,40 @@ const Form = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+
     if (checkFormFields(input) === false) {
       alert("please complete each form field");
       return;
     } else {
-       console.log("input", input);
-      async function postReq() {
-        await axios
+      console.log("input", input);
+      // async function postReq() {
+      //   await axios
+      //     .post(
+      //       "https://frontend-take-home.fetchrewards.com/form",
+      //       {
+      //         fullName: input.fullName,
+      //         email: input.email,
+      //         password: input.password,
+      //         occupation: input.occupation,
+      //         homeState: input.state,
+      //       },
+      //       {
+      //         headers: {
+      //           "content-type": "text/json",
+      //         },
+      //       }
+      //     )
+      //     .then((response) => {
+      //       console.log("post req", response.data);
+      //     })
+      //     .catch(function (error) {
+      //       return "axios post req error" + error;
+      //     });
+
+      // }
+
+      function postReq() {
+        axios
           .post(
             "https://frontend-take-home.fetchrewards.com/form",
             {
@@ -57,22 +86,25 @@ const Form = () => {
             },
             {
               headers: {
-                "content-type": "text/json",
+                "Content-Type": "application/json",
               },
             }
           )
-          .then((response) => {
-            console.log("post req", response.data);
-          })
-          .catch(function (error) {
-            return "axios post req error" + error;
-          });
-          
+          .then(
+            (response) => {
+              console.log("response from post", response.status);
+            },
+            (error) => {
+              console.log("post error", error);
+            }
+          );
       }
-      console.log('request completed')
+      console.log("request completed");
       postReq();
     }
   };
+
+  lengthOfPassword = input.password.length;
   return (
     <div className="App">
       <h2 className="userForm">User Form</h2>
@@ -96,7 +128,11 @@ const Form = () => {
             inputValue={input.password}
             handleInput={handleInput}
           />
-          {/* select inputs -- no props */}
+          {lengthOfPassword < 8 ? (
+            <h3>Your password must have at least 8 characters </h3>
+          ) : (
+            <h3>Your password has fulfilled the required criteria</h3>
+          )}
           <div>
             <label htmlFor="occupation" className="column">
               Your Occupation
