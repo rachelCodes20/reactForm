@@ -47,60 +47,27 @@ const Form = () => {
       return;
     } else {
       console.log("input", input);
-      // async function postReq() {
-      //   await axios
-      //     .post(
-      //       "https://frontend-take-home.fetchrewards.com/form",
-      //       {
-      //         fullName: input.fullName,
-      //         email: input.email,
-      //         password: input.password,
-      //         occupation: input.occupation,
-      //         homeState: input.state,
-      //       },
-      //       {
-      //         headers: {
-      //           "content-type": "text/json",
-      //         },
-      //       }
-      //     )
-      //     .then((response) => {
-      //       console.log("post req", response.data);
-      //     })
-      //     .catch(function (error) {
-      //       return "axios post req error" + error;
-      //     });
-
-      // }
-
-      function postReq() {
-        axios
+      async function postReq() {
+        const result = await axios
           .post(
             "https://frontend-take-home.fetchrewards.com/form",
             {
-              fullName: input.fullName,
+              name: input.fullName,
               email: input.email,
               password: input.password,
               occupation: input.occupation,
-              homeState: input.state,
+              state: input.homeState,
             },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
           )
-          .then(
-            (response) => {
-              console.log("response from post", response.status);
-            },
-            (error) => {
-              console.log("post error", error);
-            }
-          );
+          .then((response) => {
+            return response.data
+          })
+          .catch(function (error) {
+            return "axios post req error" + error;
+          });
+            console.log('res',result)
       }
-      console.log("request completed");
-      postReq();
+     postReq();
     }
   };
 
@@ -113,7 +80,7 @@ const Form = () => {
           <TextInput
             label="Your Full Name"
             inputID="fullName"
-            inputValue={input.fullName}
+            inputValue={input.name}
             handleInput={handleInput}
           />
           <TextInput
