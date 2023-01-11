@@ -4,7 +4,6 @@ import useRewardsData from "./hooks/useRewardsData";
 import TextInput from "./components/TextInput";
 import PasswordInput from "./components/PasswordInput";
 import RewardsForm from "./components/RewardsForm";
-import SuccessMessage from "./components/SuccessMessage";
 
 const Form = () => {
   const { states, occupations } = useRewardsData();
@@ -46,7 +45,6 @@ const Form = () => {
       alert("please complete each form field");
       return;
     } else {
-      console.log("input", input);
       async function postReq() {
         const result = await axios
           .post(
