@@ -73,6 +73,7 @@ option {
   border: none;
   font-size: 20px;
 }
+
 input {
   width: 500px;
   border: none;
@@ -102,3 +103,67 @@ input {
 .selectButton:hover {
   background-color: rgb(42, 96, 205);
 }
+
+@media only screen and (max-width: 475px) {
+.formDiv {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(195, 211, 165);
+  position: relative;
+  width:relative;
+  border-radius: 2px;
+  padding: 5px;
+  height: 100%;
+}
+.userForm {
+  text-align: center;
+  font-size: 80px;
+  padding: 5px;
+}
+
+.column {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  font-size: 900px;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  background: #9da4c1;
+  font-size: 30px;
+  font-weight: 400;
+  height: 100vh;
+  justify-items: center;
+}
+
+input {
+  width: 700px;
+  border: none;
+  padding: 5px;
+  margin: 15px;
+  height: 70px;
+  box-shadow: 10px 5px 5px #9ca4c6;
+  outline: none;
+  display: flex;
+  border-style: none;
+  border-radius: 2px;
+  flex-direction: column-reverse;
+  font-size: 25px;
+}
+
+select {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 10px 5px 5px #9fa7c7;
+  font-size: 40px;
+}
+
+
+}
+
+

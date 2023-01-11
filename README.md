@@ -17,3 +17,5 @@
 ### Accessibility
 
 > In an attempt to increase the accessibility of the application, lable elements were used to aid screen readers and user with memory loss. Text was set at a minimum of 16px, and providing color contrast between foreground and background colors.
+
+## Responsiveness
